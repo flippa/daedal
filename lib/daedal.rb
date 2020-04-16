@@ -57,3 +57,7 @@ require 'daedal/queries/function_score_query'
 require 'daedal/queries/simple_query_string_query'
 require 'daedal/queries/regexp_query'
 # facets
+
+#functions
+require 'daedal/functions/function'
+require 'daedal/functions/script_score_function'
