@@ -17,7 +17,8 @@ module Daedal
 
       # Values should be an array of hashes with filter & weight
       def valid_score_function?(score_function)
-        score_function[:filter].respond_to?(:hash) && score_function[:weight].respond_to?(:hash)
+        score_function[:filter].respond_to?(:hash) && score_function[:weight].respond_to?(:hash) &&
+          score_function[:script_score].respond_to?(:hash)
       end
     end
   end
