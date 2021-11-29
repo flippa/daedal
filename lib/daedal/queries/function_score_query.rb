@@ -10,6 +10,7 @@ module Daedal
       # non required attributes
       attribute :boost,           Daedal::Attributes::Boost,           required: false
       attribute :score_mode,      Daedal::Attributes::LowerCaseString, required: false
+      attribute :boost_mode,      Daedal::Attributes::LowerCaseString, required: false
       attribute :filter,          Daedal::Attributes::Filter,          required: false
 
       def to_hash
@@ -18,7 +19,8 @@ module Daedal
             query: build_query,
             functions: score_functions.map { |f| { filter: f[:filter]&.to_hash, weight: f[:weight], script_score: f[:script_score]&.to_hash }.compact! },
             boost: boost || 1,
-            score_mode: score_mode || "multiply"
+            score_mode: score_mode || "multiply",
+            boost_mode: boost_mode || "multiply"
           }
         }
       end

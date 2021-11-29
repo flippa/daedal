@@ -1,7 +1,7 @@
 module Daedal
   module Attributes
     """Custom coercer for the type attribute"""
-    class LowerCaseString < Virtus::Attribute
+    class LowerCaseString < String
       def coerce(value)
         value = value.to_s
         if value.empty?

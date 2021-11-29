@@ -23,9 +23,9 @@ describe Daedal::Queries::FunctionScoreQuery do
     end
   end
 
-  context 'without a boost specified' do
-    it 'will raise an error' do
-      expect{ described_class.new(query: query, score_functions: score_functions) }.to raise_error(Virtus::CoercionError)
+  context 'without optional attributes' do
+    it 'will not raise an error' do
+      expect{ described_class.new(query: query, score_functions: score_functions) }.not_to raise_error
     end
   end
 
