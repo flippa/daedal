@@ -61,3 +61,4 @@ require 'daedal/queries/regexp_query'
 #functions
 require 'daedal/functions/function'
 require 'daedal/functions/script_score_function'
+require 'daedal/functions/decay_function'

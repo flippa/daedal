@@ -16,8 +16,8 @@ module Daedal
         {
           field => {
             origin: origin,
-            offset: offset,
             scale: scale,
+            offset: offset,
             decay: decay,
           }.compact
         }
