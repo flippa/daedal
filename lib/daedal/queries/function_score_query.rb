@@ -17,7 +17,7 @@ module Daedal
         {
           function_score: {
             query: build_query,
-            functions: score_functions.map { |f| { filter: f[:filter]&.to_hash, weight: f[:weight], script_score: f[:script_score]&.to_hash }.compact! },
+            functions: score_functions.map { |score_function| build_score_function(score_function) },
             boost: boost || 1,
             score_mode: score_mode || "multiply",
             boost_mode: boost_mode || "multiply"
@@ -33,6 +33,17 @@ module Daedal
         else
           query.to_hash
         end
+      end
+
+      def build_score_function(score_function)
+        {
+          filter: score_function[:filter]&.to_hash,
+          weight: score_function[:weight],
+          script_score: score_function[:script_score]&.to_hash,
+          gauss: score_function[:gauss]&.to_hash,
+          exp: score_function[:exp]&.to_hash,
+          linear: score_function[:linear]&.to_hash,
+        }.compact
       end
     end
   end
